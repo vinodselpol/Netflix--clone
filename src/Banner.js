@@ -29,7 +29,7 @@ function Banner() {
 
     },[])
 
-    // console log the code to the console 
+    
 
 
     function truncate(string, n){
