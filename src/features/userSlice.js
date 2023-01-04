@@ -20,8 +20,8 @@
 //   }
 // );
 
-// export const counterSlice = createSlice({
-//   name: 'counter',
+// export const userSlice = createSlice({
+//   name: 'user',
 //   initialState,
 //   // The `reducers` field lets us define reducers and generate associated actions
 //   reducers: {
@@ -71,3 +71,34 @@
 // };
 
 // export default counterSlice.reducer;
+
+
+import { createSlice } from "@reduxjs/toolkit";
+
+const initialState = {
+  user: null,
+  subscriptionRole:null,
+};
+
+export const userSlice = createSlice({
+  name: "user",
+  initialState,
+  reducers: {
+    login: (state, action) => {
+      state.user = action.payload;
+    },
+    logout: (state) => {
+      state.user = null;
+    },
+    changeSubscription: (state, action) => {
+      state.subscriptionRole = action.payload
+    }
+  },
+});
+
+export const { login, logout, changeSubscription } = userSlice.actions;
+
+export const selectUser = (state) => state.user.user;
+export const selectSubscriptionRole = (state) => state.user.subscriptionRole;
+
+export default userSlice.reducer;
